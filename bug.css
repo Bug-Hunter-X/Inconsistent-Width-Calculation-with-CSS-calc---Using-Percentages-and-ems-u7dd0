@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an uncommon error related to unexpected behavior when using the `calc()` function with percentages and `em` units:
+
+```css
+.container {
+  width: 50%;
+}
+
+.element {
+  width: calc(50% + 2em);
+}
+```
+
+The intention is to make `.element` wider than `.container` by 2em.  However, this might not work as expected across different browsers or screen sizes.  The `calc()` function's handling of mixed units (percentages and `em`) can lead to inconsistent results because the percentage is calculated relative to the parent element's width, while `em` is relative to the font size.
+
+Another problem can occur when dealing with nested elements. If the parent element's dimensions aren't explicitly set or are not clearly resolved during layout, the calculation might yield unexpected values leading to elements being displayed smaller or larger than anticipated.  This can also happen if the parent element has a `box-sizing` set to `border-box` that impacts the calculation.
+
+This unpredictable outcome is often difficult to debug because it might show up inconsistently or only under certain conditions.
