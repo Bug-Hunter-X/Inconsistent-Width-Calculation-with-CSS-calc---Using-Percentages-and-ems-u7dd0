@@ -1,0 +1,48 @@
+To avoid inconsistencies, consider these alternatives:
+
+**1. Using only percentages or only ems:**
+
+If possible, express the width entirely using percentages or ems.  This removes the ambiguity caused by mixed units.
+
+```css
+.container {
+  width: 50%;
+}
+
+.element {
+  width: 60%; /* Or use a fixed em value */
+}
+```
+
+**2. Using viewport units (vw, vh):**
+
+Viewport units offer more predictable scaling based on the viewport dimensions.
+
+```css
+.container {
+  width: 50vw;
+}
+
+.element {
+  width: calc(50vw + 20px); /* Use pixels for a consistent addition */
+}
+```
+
+**3. JavaScript for dynamic calculation:**
+
+For more complex scenarios, use JavaScript to dynamically calculate the width based on the parent's width and the desired additional `em` value.  This offers precision and control but adds complexity.
+
+**4. Setting a fixed width for the parent container:**
+This eliminates ambiguity caused by percentage width calculation in the parent. If possible, consider using fixed widths (pixels or ems) for parent containers to resolve calculation issues in children. 
+
+```css
+.container {
+  width: 300px;
+}
+
+.element {
+  width: calc(50% + 2em);
+}
+```
+
+Choosing the best approach depends on the specific context and desired behavior. Avoid mixing percentage and absolute units within `calc()` whenever possible for consistent results.
